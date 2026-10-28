@@ -1,56 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  
-  /* Light theme colors */
-  --background-light: #F7F8F0;
-  --surface-light: #9CD5FF;
-  --color-primary: #0070f3;
-  --color-secondary: #ff4081;
-  --color-textcolor: #000000;
-  --color-borders: #e0e0e0;
-
-  /* Dark theme colors */
-  --background-dark: #0F1B26;
-  --surface-dark: #1A2B3A;
-  --color-primary-dark: #7AAACE;
-  --color-secondary-dark: #9CD5FF;
-  --color-textcolor-dark: #F7F8F0;
-  --color-borders-dark: #4A6A85;
-}
-
-@theme inline {
-  --color-background: var(--background-light);
-  --color-foreground: var(--surface-light);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-textcolor: var(--color-textcolor);
-  --color-borders: var(--color-borders);
+  /* Active app tokens (light defaults) */
+  --app-background: #f7f8f0;
+  --app-foreground: #9cd5ff;
+  --app-primary: #355872;
+  --app-secondary: #7aaace;
+  --app-text: #355872;
+  --app-borders: #4a6a85;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--background-dark);
-    --color-foreground: var(--surface-dark);
-    --color-primary: var(--color-primary-dark);
-    --color-secondary: var(--color-secondary-dark);
-    --color-textcolor: var(--color-textcolor-dark);
-    --color-borders: var(--color-borders-dark);
+    --app-background: #0f1b26;
+    --app-foreground: #1a2b3a;
+    --app-primary: #7aaace;
+    --app-secondary: #9cd5ff;
+    --app-text: #f7f8f0;
+    --app-borders: #4a6a85;
   }
 }
 
+@theme inline {
+  --color-background: var(--app-background);
+  --color-foreground: var(--app-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--app-primary);
+  --color-secondary: var(--app-secondary);
+  --color-textcolor: var(--app-text);
+  --color-borders: var(--app-borders);
+}
+
 body {
-  @apply bg-background text-textcolor border-borders;
+  @apply border-borders bg-background text-textcolor;
   /* Roboto and NotoSansJP fonts */
-  font-family: 'Roboto', 'Noto Sans JP', var(--font-sans);
+  font-family: "Roboto", "Noto Sans JP", var(--font-sans);
 }
 
 /* Add button styles */
 button,
 .button {
-  @apply cursor-pointer transition-colors duration-300 ease-in-out bg-primary text-textcolor px-4 py-2 rounded-2xl;
+  @apply cursor-pointer rounded-2xl bg-primary px-4 py-2 text-textcolor transition-colors duration-300 ease-in-out;
 }
 button:hover,
 .button:hover {
@@ -58,5 +49,5 @@ button:hover,
 }
 
 .badge {
-  @apply inline-block rounded-[0.8rem] font-semibold px-1.5 py-0.5 text-xs md:px-2 md:py-1 md:text-sm;
+  @apply inline-block rounded-[0.8rem] px-1.5 py-0.5 text-xs font-semibold md:px-2 md:py-1 md:text-sm;
 }
