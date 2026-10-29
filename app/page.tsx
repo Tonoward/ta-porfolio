@@ -1,25 +1,9 @@
-//Components
-import Card from "../components/Card";
-
+// Temporary placeholder. The real home page (intro card + scene) is a later step.
 export default function Home() {
   return (
-    <>
-      <div className="flex flex-1 flex-col items-center justify-center font-sans">
-        <h1 className="text-4xl font-bold text-black dark:text-white">
-          Button style
-        </h1>
-        <button className="button">Click me</button>
-
-        <h1 className="text-4xl font-semibold text-black dark:text-white">
-          Card component
-        </h1>
-        <Card
-          Tags={["frontend", "backend", "ai"]}
-          Title="Card Title"
-          Img=""
-          Description=""
-        />
-      </div>
-    </>
+    <div className="flex flex-1 flex-col items-center justify-center px-6 py-20 text-center">
+      <h1 className="text-4xl font-bold tracking-tight">Antonio Cruz</h1>
+      <p className="mt-2 text-muted">AI &amp; Full-Stack developer</p>
+    </div>
   );
 }

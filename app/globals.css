@@ -1,53 +1,195 @@
 @import "tailwindcss";
 
+/* Light and dark syntaxis for better color management */
 :root {
-  /* Active app tokens (light defaults) */
-  --app-background: #f7f8f0;
-  --app-foreground: #9cd5ff;
-  --app-primary: #355872;
-  --app-secondary: #7aaace;
-  --app-text: #355872;
-  --app-borders: #4a6a85;
+  color-scheme: light dark;
+
+  /* Base palette */
+  --background: light-dark(#f7f8f0, #0f1b26);
+  --foreground: light-dark(#1f3a4f, #f7f8f0);
+  --muted: light-dark(#4a6a85, #a5b8c9);
+  --surface: light-dark(#fdfdf9, #1a2b3a); /* opaque fallback for glass */
+  --primary: light-dark(#355872, #7aaace);
+  --primary-hover: light-dark(#2b465b, #9cd5ff);
+  --primary-foreground: light-dark(#f7f8f0, #0f1b26); /* text ON primary */
+  --accent: light-dark(#7aaace, #9cd5ff);
+  --border: light-dark(rgb(53 88 114 / 0.22), rgb(255 255 255 / 0.14));
+
+  /* Category colors. with hues distinction */
+  --cat-full-stack: light-dark(#2f6fe0, #5b9bff);
+  --cat-full-stack-ink: light-dark(#1d4fa8, #9dc3ff);
+  --cat-ai: light-dark(#8b5cf6, #a27bff);
+  --cat-ai-ink: light-dark(#6b3fa0, #c9b0ff);
+  --cat-embedded: light-dark(#2e9e5b, #43c77c);
+  --cat-embedded-ink: light-dark(#1b6b3a, #86e0a8);
+  --cat-backend-cloud: light-dark(#f2b318, #f5c12e);
+  --cat-backend-cloud-ink: light-dark(#7a4f00, #f5d56b);
+
+  /* glass */
+  --glass-blur: 20px;
+  --glass-fill: light-dark(rgb(255 255 255 / 0.55), rgb(26 43 58 / 0.5));
+  --glass-fill-thick: light-dark(rgb(255 255 255 / 0.72), rgb(18 30 42 / 0.68));
+  --glass-sheen: light-dark(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.08));
+  --glass-highlight: light-dark(
+    rgb(255 255 255 / 0.9),
+    rgb(255 255 255 / 0.18)
+  );
+  --glass-rim-a: light-dark(rgb(255 255 255 / 0.95), rgb(255 255 255 / 0.3));
+  --glass-rim-b: light-dark(rgb(53 88 114 / 0.14), rgb(255 255 255 / 0.06));
+  --glass-shadow: light-dark(rgb(53 88 114 / 0.28), rgb(0 0 0 / 0.55));
+  --glass-shadow-soft: light-dark(rgb(53 88 114 / 0.12), rgb(0 0 0 / 0.3));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --app-background: #0f1b26;
-    --app-foreground: #1a2b3a;
-    --app-primary: #7aaace;
-    --app-secondary: #9cd5ff;
-    --app-text: #f7f8f0;
-    --app-borders: #4a6a85;
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Expose the tokens as Tailwind utilities: bg-surface, text-muted, ... */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
+  --color-cat-full-stack: var(--cat-full-stack);
+  --color-cat-full-stack-ink: var(--cat-full-stack-ink);
+  --color-cat-ai: var(--cat-ai);
+  --color-cat-ai-ink: var(--cat-ai-ink);
+  --color-cat-embedded: var(--cat-embedded);
+  --color-cat-embedded-ink: var(--cat-embedded-ink);
+  --color-cat-backend-cloud: var(--cat-backend-cloud);
+  --color-cat-backend-cloud-ink: var(--cat-backend-cloud-ink);
+
+  --font-sans:
+    var(--font-roboto), "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Glass needs something to blur, so the page gets a soft "aurora" made of the four category hues, fixed behind everything. */
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    isolation: isolate;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        60rem 38rem at 8% -8%,
+        color-mix(in oklab, var(--cat-full-stack) 24%, transparent),
+        transparent 65%
+      ),
+      radial-gradient(
+        52rem 36rem at 96% 4%,
+        color-mix(in oklab, var(--cat-ai) 22%, transparent),
+        transparent 65%
+      ),
+      radial-gradient(
+        56rem 38rem at -4% 104%,
+        color-mix(in oklab, var(--cat-embedded) 20%, transparent),
+        transparent 65%
+      ),
+      radial-gradient(
+        52rem 34rem at 102% 100%,
+        color-mix(in oklab, var(--cat-backend-cloud) 20%, transparent),
+        transparent 65%
+      );
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
   }
 }
 
-@theme inline {
-  --color-background: var(--app-background);
-  --color-foreground: var(--app-foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-primary: var(--app-primary);
-  --color-secondary: var(--app-secondary);
-  --color-textcolor: var(--app-text);
-  --color-borders: var(--app-borders);
+/* Glass surface. Use: class="glass rounded-3xl p-6".
+   Layers, top to bottom: diagonal sheen, tinted fill, and a gradient rim that
+   is bright on opposite corners like light catching a glass edge. */
+@utility glass {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(135deg, var(--glass-sheen), transparent 45%) padding-box,
+    linear-gradient(var(--glass-fill), var(--glass-fill)) padding-box,
+    linear-gradient(
+        135deg,
+        var(--glass-rim-a),
+        var(--glass-rim-b) 35%,
+        var(--glass-rim-b) 65%,
+        var(--glass-rim-a)
+      )
+      border-box;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 14px 34px -14px var(--glass-shadow),
+    0 2px 8px -2px var(--glass-shadow-soft);
+
+  @media (forced-colors: active) {
+    background: Canvas;
+    border-color: CanvasText;
+  }
 }
 
-body {
-  @apply border-borders bg-background text-textcolor;
-  /* Roboto and NotoSansJP fonts */
-  font-family: "Roboto", "Noto Sans JP", var(--font-sans);
+/* thicker glass for surfaces with a lot of text */
+@utility glass-thick {
+  --glass-fill: var(--glass-fill-thick);
+  --glass-blur: 32px;
 }
 
-/* Add button styles */
-button,
-.button {
-  @apply cursor-pointer rounded-2xl bg-primary px-4 py-2 text-textcolor transition-colors duration-300 ease-in-out;
-}
-button:hover,
-.button:hover {
-  @apply bg-secondary text-textcolor;
+/* Accessibility and older browsers: fall back to a solid surface. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-fill: var(--surface);
+    --glass-fill-thick: var(--surface);
+    --glass-sheen: transparent;
+    --glass-blur: 0px;
+  }
 }
 
-.badge {
-  @apply inline-block rounded-[0.8rem] px-1.5 py-0.5 text-xs font-semibold md:px-2 md:py-1 md:text-sm;
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  :root {
+    --glass-fill: var(--surface);
+    --glass-fill-thick: var(--surface);
+    --glass-sheen: transparent;
+  }
+}
+
+/* ThemeToggle sets this attribute for a moment while the theme flips, so every
+   color changes at once instead of some elements fading and others snapping. */
+:root[data-theme-switching] *,
+:root[data-theme-switching] ::before,
+:root[data-theme-switching] ::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

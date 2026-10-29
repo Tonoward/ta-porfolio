@@ -5,14 +5,6 @@ const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "developers.elementor.com",
-      },
-    ],
-  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
