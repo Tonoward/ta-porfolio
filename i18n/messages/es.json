@@ -46,8 +46,8 @@
   "categories": {
     "full-stack": "Full-Stack",
     "ai": "IA",
-    "embedded": "Embebidos",
-    "backend-cloud": "Backend / Nube"
+    "embedded": "Sistemas Embebidos / IoT",
+    "backend-cloud": "Backend / Cloud"
   },
   "projectCard": {
     "categories": "Categorías",
