@@ -1,21 +1,26 @@
 import type { CategoryKey } from "@/lib/categories";
+import type { Locale } from "@/i18n/config";
+import { localize, type LocalizedText } from "@/i18n/localized";
 
 export type Project = {
   /** URL segment: /work/case-studies/[slug]. Must match the .mdx filename. */
   slug: string;
-  title: string;
+  /** Text is { en: "...", es: "...", ja: "..." }. Only English is required. */
+  title: LocalizedText;
   /** Broad summary, shown on the case study page. */
-  summary: string;
+  summary: LocalizedText;
   /** A project can belong to several categories. */
   categories: CategoryKey[];
-  /*One summary per category, written from that category's point of view */
-  categorySummaries: Partial<Record<CategoryKey, string>>;
+  /** One summary per category, written from that category's point of view. */
+  categorySummaries: Partial<Record<CategoryKey, LocalizedText>>;
+  /** Technology names are not translated. */
   tags: string[];
-  /** Path under /public. undefined defaults to the placeholder image*/
+  /** Path under /public. undefined defaults to the placeholder image */
   image?: string;
 };
 
-// Metadata only. The long case study text lives in content/case-studies/<slug>.mdx.
+// Metadata only. The long case study text lives in content/case-studies/<slug>.<lang>.mdx
+// (English is the fallback).
 export const projects: Project[] = [];
 
 export function getProjectsByCategory(category: CategoryKey): Project[] {
@@ -25,6 +30,8 @@ export function getProjectsByCategory(category: CategoryKey): Project[] {
 export function getCategorySummary(
   project: Project,
   category: CategoryKey,
+  lang: Locale,
 ): string {
-  return project.categorySummaries[category] ?? project.summary;
+  const summary = project.categorySummaries[category] ?? project.summary;
+  return localize(summary, lang);
 }

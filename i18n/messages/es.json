@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Antonio Cruz | Desarrollador de IA y Full-Stack",
+    "description": "Bienvenido a mi portafolio personal, donde presento mi trabajo y mis proyectos de desarrollo frontend, backend e inteligencia artificial."
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido"
+  },
+  "nav": {
+    "label": "Principal",
+    "footerLabel": "Pie de página",
+    "about": "Sobre mí",
+    "work": "Proyectos",
+    "lab": "Laboratorio de IA",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "theme": {
+    "toggle": "Cambiar tema",
+    "switchToLight": "Cambiar a tema claro",
+    "switchToDark": "Cambiar a tema oscuro"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "social": {
+    "opensInNewTab": "se abre en una pestaña nueva"
+  },
+  "footer": {
+    "tagline": "Desarrollador de IA y Full-Stack"
+  },
+  "home": {
+    "headline": "Desarrollador de IA y Full-Stack",
+    "intro": "Ayudo a personas y equipos a incorporar la IA en sus flujos de trabajo y productos: chatbots, análisis de documentos, automatización y soluciones de IA abiertas o locales, con experiencia full-stack y en sistemas embebidos.",
+    "tryLab": "Probar el Laboratorio de IA",
+    "contact": "Contacto",
+    "moreAbout": "Más sobre mí",
+    "workHeading": "Mis proyectos",
+    "scrollToWork": "Ver mis proyectos",
+    "lab": {
+      "title": "Laboratorio de IA",
+      "subtitle": "Prueba demos en vivo"
+    }
+  },
+  "categories": {
+    "full-stack": "Full-Stack",
+    "ai": "IA",
+    "embedded": "Embebidos",
+    "backend-cloud": "Backend / Nube"
+  },
+  "projectCard": {
+    "categories": "Categorías",
+    "seeMore": "Ver más"
+  },
+  "work": {
+    "title": "Proyectos",
+    "pickCategory": "Elige una categoría para ver mis proyectos.",
+    "back": "Volver a las categorías",
+    "empty": "Todavía no hay proyectos en esta categoría."
+  },
+  "pages": {
+    "about": { "title": "Sobre mí" },
+    "lab": { "title": "Laboratorio de IA" },
+    "contact": { "title": "Contacto" },
+    "comingSoon": "Esta página estará disponible pronto."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "La página que buscas no existe o ha cambiado de lugar.",
+    "backHome": "Volver al inicio"
+  }
+}

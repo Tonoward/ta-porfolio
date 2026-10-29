@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getCategorySummary, type Project } from "@/content/projects";
+import type { Locale } from "@/i18n/config";
+import { localize } from "@/i18n/localized";
+import { localizePath } from "@/i18n/paths";
+import type { Dictionary } from "@/i18n/types";
 import type { CategoryKey } from "@/lib/categories";
 
 import Badge from "@/components/ui/Badge";
@@ -10,15 +14,19 @@ const PLACEHOLDER_IMAGE = "/placeholder-project.svg";
 
 export default function ProjectCard({
   project,
+  lang,
+  dict,
   category,
 }: {
   project: Project;
+  lang: Locale;
+  dict: Pick<Dictionary, "categories" | "projectCard">;
   /** The category list being viewed. Picks the summary written for it. */
   category?: CategoryKey;
 }) {
   const summary = category
-    ? getCategorySummary(project, category)
-    : project.summary;
+    ? getCategorySummary(project, category, lang)
+    : localize(project.summary, lang);
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-3xl glass text-foreground transition duration-300 hover:-translate-y-1 motion-reduce:hover:translate-y-0 sm:flex-row">
@@ -34,10 +42,13 @@ export default function ProjectCard({
 
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="overflow-x-auto">
-          <ul className="flex flex-wrap gap-2" aria-label="Categories">
+          <ul
+            className="flex flex-wrap gap-2"
+            aria-label={dict.projectCard.categories}
+          >
             {project.categories.map((key) => (
               <li key={key}>
-                <Badge category={key} />
+                <Badge category={key} label={dict.categories[key]} />
               </li>
             ))}
           </ul>
@@ -45,10 +56,10 @@ export default function ProjectCard({
 
         <h3 className="text-xl font-bold">
           <Link
-            href={`/work/case-studies/${project.slug}`}
+            href={localizePath(lang, `/work/case-studies/${project.slug}`)}
             className="after:absolute after:inset-0 after:content-['']"
           >
-            {project.title}
+            {localize(project.title, lang)}
           </Link>
         </h3>
 
@@ -60,7 +71,7 @@ export default function ProjectCard({
           aria-hidden
           className="mt-auto text-sm font-medium text-primary transition-transform duration-300 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0"
         >
-          See more →
+          {dict.projectCard.seeMore} →
         </span>
       </div>
     </article>

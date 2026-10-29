@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import type { Project } from "@/content/projects";
+import { getDictionary, getLocale } from "@/i18n/server";
 import { categoryKeys } from "@/lib/categories";
 
 import Badge from "@/components/ui/Badge";
@@ -30,23 +31,37 @@ const categoryDots: Record<(typeof categoryKeys)[number], string> = {
 };
 
 // Made-up data, only to preview the card. Real projects live in content/projects.ts.
+// The title has all three languages. Other fields are English only, to show the
+// fallback: switch the language and the summaries stay in English.
 const sampleProject: Project = {
   slug: "sample-project",
-  title: "Document chat for a logistics team",
-  summary:
-    "A web app where a team uploads PDFs and asks questions about them, with answers that cite the page they came from.",
+  title: {
+    en: "Document chat for a logistics team",
+    es: "Chat con documentos para un equipo de logística",
+    ja: "物流チーム向けのドキュメントチャット",
+  },
+  summary: {
+    en: "A web app where a team uploads PDFs and asks questions about them, with answers that cite the page they came from.",
+  },
   categories: ["full-stack", "ai", "backend-cloud", "embedded"],
   categorySummaries: {
-    ai: "Retrieval over chunked PDFs with embeddings, page citations and a small evaluation set to track answer quality.",
-    "backend-cloud":
-      "A containerized API with per-session storage, upload validation and automatic deletion of documents.",
+    ai: {
+      en: "Retrieval over chunked PDFs with embeddings, page citations and a small evaluation set to track answer quality.",
+      es: "Recuperación sobre PDFs divididos en fragmentos, con embeddings, citas de página y un pequeño conjunto de evaluación para medir la calidad de las respuestas.",
+    },
+    "backend-cloud": {
+      en: "A containerized API with per-session storage, upload validation and automatic deletion of documents.",
+    },
   },
   tags: ["Next.js", "Postgres", "pgvector"],
 };
 
 // design system review page
-export default function DesignPage() {
+export default async function DesignPage() {
   if (process.env.NODE_ENV === "production") notFound();
+
+  const lang = await getLocale();
+  const dict = await getDictionary();
 
   return (
     <div className="mx-auto w-full max-w-5xl flex-1 space-y-12 px-6 pt-12 pb-20">
@@ -109,7 +124,7 @@ export default function DesignPage() {
                 className={`${categoryDots[key]} size-4 shrink-0 rounded-full`}
                 aria-hidden
               />
-              <Badge category={key} />
+              <Badge category={key} label={dict.categories[key]} />
             </li>
           ))}
         </ul>
@@ -129,7 +144,7 @@ export default function DesignPage() {
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
           <Button size="lg">Large</Button>
-          <ButtonLink href="/design" variant="glass">
+          <ButtonLink href={`/${lang}/design`} variant="glass">
             As a link
           </ButtonLink>
         </div>
@@ -144,9 +159,24 @@ export default function DesignPage() {
           to focus on that category.
         </p>
         <div className="grid gap-6 lg:grid-cols-2">
-          <ProjectCard project={sampleProject} category="ai" />
-          <ProjectCard project={sampleProject} category="backend-cloud" />
-          <ProjectCard project={sampleProject} category="full-stack" />
+          <ProjectCard
+            project={sampleProject}
+            lang={lang}
+            dict={dict}
+            category="ai"
+          />
+          <ProjectCard
+            project={sampleProject}
+            lang={lang}
+            dict={dict}
+            category="backend-cloud"
+          />
+          <ProjectCard
+            project={sampleProject}
+            lang={lang}
+            dict={dict}
+            category="full-stack"
+          />
         </div>
       </section>
     </div>

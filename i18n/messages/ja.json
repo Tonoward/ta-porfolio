@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Antonio Cruz | AI・フルスタック開発者",
+    "description": "フロントエンド、バックエンド、AI開発における私の仕事とプロジェクトを紹介する個人ポートフォリオへようこそ。"
+  },
+  "a11y": {
+    "skipToContent": "本文へスキップ"
+  },
+  "nav": {
+    "label": "メインナビゲーション",
+    "footerLabel": "フッター",
+    "about": "自己紹介",
+    "work": "実績",
+    "lab": "AIラボ",
+    "contact": "お問い合わせ",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる"
+  },
+  "theme": {
+    "toggle": "テーマを切り替える",
+    "switchToLight": "ライトテーマに切り替える",
+    "switchToDark": "ダークテーマに切り替える"
+  },
+  "language": {
+    "label": "言語"
+  },
+  "social": {
+    "opensInNewTab": "新しいタブで開きます"
+  },
+  "footer": {
+    "tagline": "AI・フルスタック開発者"
+  },
+  "home": {
+    "headline": "AI・フルスタック開発者",
+    "intro": "個人やチームの業務・プロダクトへのAI導入を支援します。チャットボット、文書分析、自動化、オープンソースやローカルで動くAIソリューションを、フルスタックと組み込みの経験を活かして提供します。",
+    "tryLab": "AIラボを試す",
+    "contact": "お問い合わせ",
+    "moreAbout": "自己紹介を見る",
+    "workHeading": "実績",
+    "scrollToWork": "実績を見る",
+    "lab": {
+      "title": "AIラボ",
+      "subtitle": "ライブデモを試す"
+    }
+  },
+  "categories": {
+    "full-stack": "フルスタック",
+    "ai": "AI",
+    "embedded": "組み込み",
+    "backend-cloud": "バックエンド / クラウド"
+  },
+  "projectCard": {
+    "categories": "カテゴリ",
+    "seeMore": "詳しく見る"
+  },
+  "work": {
+    "title": "実績",
+    "pickCategory": "カテゴリを選んでプロジェクトを見る。",
+    "back": "カテゴリ一覧に戻る",
+    "empty": "このカテゴリにはまだプロジェクトがありません。"
+  },
+  "pages": {
+    "about": { "title": "自己紹介" },
+    "lab": { "title": "AIラボ" },
+    "contact": { "title": "お問い合わせ" },
+    "comingSoon": "このページは近日公開予定です。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "body": "お探しのページは存在しないか、移動した可能性があります。",
+    "backHome": "ホームに戻る"
+  }
+}

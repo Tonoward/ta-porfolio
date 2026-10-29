@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 import { MoonIcon, SunIcon } from "@/components/ui/icons";
+import type { Dictionary } from "@/i18n/types";
 import { iconButtonClass } from "@/lib/styles";
 
 type Theme = "light" | "dark";
@@ -33,7 +34,7 @@ function getServerSnapshot(): Theme | null {
   return null;
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ dict }: { dict: Dictionary["theme"] }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   function toggle() {
@@ -60,8 +61,10 @@ export default function ThemeToggle() {
       className={iconButtonClass}
       aria-label={
         theme === null
-          ? "Toggle theme"
-          : `Switch to ${theme === "dark" ? "light" : "dark"} theme`
+          ? dict.toggle
+          : theme === "dark"
+            ? dict.switchToLight
+            : dict.switchToDark
       }
     >
       {theme === "dark" && <SunIcon />}

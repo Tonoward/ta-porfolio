@@ -10,7 +10,14 @@ const icons = {
 
 // The caller picks the display class (e.g. "flex" or "hidden md:flex"), so two
 // competing display utilities never end up on the same element.
-export default function SocialLinks({ className }: { className: string }) {
+export default function SocialLinks({
+  className,
+  newTabLabel,
+}: {
+  className: string;
+  /** Translated "opens in a new tab": dict.social.opensInNewTab. */
+  newTabLabel: string;
+}) {
   return (
     <ul className={cn("items-center gap-1", className)}>
       {socialLinks.map(({ name, href, icon }) => {
@@ -21,7 +28,7 @@ export default function SocialLinks({ className }: { className: string }) {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${name} (opens in a new tab)`}
+              aria-label={`${name} (${newTabLabel})`}
               className={iconButtonClass}
             >
               <SocialIcon />

@@ -69,8 +69,11 @@
   --color-cat-backend-cloud: var(--cat-backend-cloud);
   --color-cat-backend-cloud-ink: var(--cat-backend-cloud-ink);
 
+  /* Loaded in [lang]/layout.tsx. Roboto covers Latin text; the browser falls
+     through to Noto Sans JP only for characters Roboto lacks. */
   --font-sans:
-    var(--font-roboto), "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+    var(--font-roboto), var(--font-noto-jp), ui-sans-serif, system-ui,
+    sans-serif;
 }
 
 /* Glass needs something to blur, so the page gets a soft "aurora" made of the four category hues, fixed behind everything. */

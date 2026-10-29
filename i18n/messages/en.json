@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Antonio Cruz | AI & Full-Stack Developer",
+    "description": "Welcome to my personal portfolio showcasing my work and projects in frontend, backend, and AI development."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "label": "Main",
+    "footerLabel": "Footer",
+    "about": "About",
+    "work": "Work",
+    "lab": "AI Lab",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "social": {
+    "opensInNewTab": "opens in a new tab"
+  },
+  "footer": {
+    "tagline": "AI & Full-Stack developer"
+  },
+  "home": {
+    "headline": "AI & Full-Stack developer",
+    "intro": "I help individuals and teams bring AI into their workflows and products: chatbots, document analysis, automation, and open or local AI solutions, backed by full-stack and embedded experience.",
+    "tryLab": "Try the AI Lab",
+    "contact": "Contact",
+    "moreAbout": "More about me",
+    "workHeading": "My work",
+    "scrollToWork": "See my work",
+    "lab": {
+      "title": "AI Lab",
+      "subtitle": "Try live demos"
+    }
+  },
+  "categories": {
+    "full-stack": "Full-Stack",
+    "ai": "AI",
+    "embedded": "Embedded",
+    "backend-cloud": "Backend / Cloud"
+  },
+  "projectCard": {
+    "categories": "Categories",
+    "seeMore": "See more"
+  },
+  "work": {
+    "title": "Work",
+    "pickCategory": "Pick a category to see my projects.",
+    "back": "Back to categories",
+    "empty": "No projects in this category yet."
+  },
+  "pages": {
+    "about": { "title": "About" },
+    "lab": { "title": "AI Lab" },
+    "contact": { "title": "Contact" },
+    "comingSoon": "This page is coming soon."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back to home"
+  }
+}
