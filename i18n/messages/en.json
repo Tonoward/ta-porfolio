@@ -43,6 +43,16 @@
       "subtitle": "Try live demos"
     }
   },
+  "contact": {
+    "headline": "Let's get in touch!",
+    "yourName": "Your name",
+    "email": "Email",
+    "topic": "Topic",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "manualEmail1": "If you prefer, you can use this email:",
+    "manualEmail2": "to contact me."
+  },
   "categories": {
     "full-stack": "Full-Stack",
     "ai": "AI",

@@ -1,10 +1,20 @@
 "use client";
+//React
+import { useState } from "react";
 
+//Components
 import Button from "@/components/ui/Button";
 
+//Turnstile
+import { Turnstile } from "@marsidev/react-turnstile";
+
 export default function EmailForm() {
+  const [token, setToken] = useState<string | null>(null);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!token) return alert("Please complete the security check.");
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -57,6 +67,10 @@ export default function EmailForm() {
             className="mt-1 flex w-full rounded-md border-1 border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
+        <div className="hidden">
+          <label htmlFor="website">Phone</label>
+          <input id="phone" name="website" type="tel" />
+        </div>
       </div>
       <div>
         <div className="flex w-full flex-col">
@@ -71,9 +85,17 @@ export default function EmailForm() {
           ></textarea>
         </div>
       </div>
-      <Button className="mt-4" type="submit">
-        Send Message
-      </Button>
+      {/* <div className="flex w-full items-center justify-center pt-4">
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+          onSuccess={(token) => setToken(token)}
+        />
+      </div> */}
+      <div className="flex items-center justify-center">
+        <Button className="mt-4" type="submit">
+          Send Message
+        </Button>
+      </div>
     </form>
   );
 }

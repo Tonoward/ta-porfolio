@@ -43,6 +43,16 @@
       "subtitle": "Prueba demos en vivo"
     }
   },
+    "contact": {
+    "headline": "¡Pongámonos en contacto!",
+    "yourName": "Tu nombre",
+    "email": "Correo electrónico",
+    "topic": "Asunto",
+    "message": "Mensaje",
+    "sendMessage": "Enviar mensaje",
+    "manualEmail1": "Si lo prefieres, puedes usar este correo:",
+    "manualEmail2": "para contactarme."
+  },
   "categories": {
     "full-stack": "Full-Stack",
     "ai": "IA",

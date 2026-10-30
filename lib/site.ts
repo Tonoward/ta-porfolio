@@ -4,6 +4,7 @@ export const siteConfig = {
   // Names are not translated. Title and description are in i18n/messages/*.json.
   name: "Antonio Cruz",
   url: "https://ta-tech.dev",
+  contactEmail: "contact@example.com",
 } as const;
 
 // `key` is the label's key in the dictionary (dict.nav[key]). Hrefs have no

@@ -43,6 +43,16 @@
       "subtitle": "ライブデモを試す"
     }
   },
+    "contact": {
+    "headline": "連携しましょう！",
+    "yourName": "お名前",
+    "email": "メールアドレス",
+    "topic": "件名",
+    "message": "メッセージ",
+    "sendMessage": "送信",
+    "manualEmail1": "上記のフォーム以外をお使いになられる場合、こちらのメールアドレスをご利用ください：",
+    "manualEmail2": ""
+  },
   "categories": {
     "full-stack": "フルスタック",
     "ai": "AI",
